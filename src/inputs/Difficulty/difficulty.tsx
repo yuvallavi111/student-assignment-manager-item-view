@@ -1,21 +1,22 @@
-import { Flex } from '@chakra-ui/react'
+import { Flex, FlexProps } from '@chakra-ui/react'
 import { useState } from 'react'
+import { theme } from '../../theme'
 import { DifficultyBox } from './difficulty-box'
-import { diffcultyColors } from './difficulty-colors'
 
-interface IDifficultyProps {
+interface IDifficultyProps extends FlexProps {
 	value: number
-	onChange: (index: number) => void
+	onChangeHandler: (index: number) => void
 }
 
-export const Difficulty = ({ value, onChange }: IDifficultyProps) => {
+export const Difficulty = ({ value, onChangeHandler, ...props }: IDifficultyProps) => {
 	const [isHover, setIsHover] = useState(false)
 	const [hoveredIndex, setHoveredIndex] = useState(0)
 	return (
-		<Flex>
-			{diffcultyColors.difficulties.map((c, i) => {
+		<Flex {...props} data-id='Difficulty'>
+			{theme.diffcultyColors.map((c, i) => {
 				return (
 					<DifficultyBox
+						data-id={`difficulty-box-${i}`}
 						key={`difficulty-box-${i}`}
 						onHover={() => {
 							setIsHover(true)
@@ -25,13 +26,13 @@ export const Difficulty = ({ value, onChange }: IDifficultyProps) => {
 						color={
 							isHover
 								? i > hoveredIndex
-									? diffcultyColors.defaultColor
-									: diffcultyColors.difficulties[hoveredIndex]
+									? theme.defaultColor
+									: theme.diffcultyColors[hoveredIndex]
 								: i > value
-								? diffcultyColors.defaultColor
-								: diffcultyColors.difficulties[hoveredIndex]
+								? theme.defaultColor
+								: theme.diffcultyColors[value]
 						}
-						onClick={() => onChange(i)}
+						onClick={() => onChangeHandler(i)}
 					/>
 				)
 			})}

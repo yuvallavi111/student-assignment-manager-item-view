@@ -10,8 +10,8 @@ interface IDifficultyBoxProps {
 export const DifficultyBox = ({ color, onHover, onUnHover, onClick }: IDifficultyBoxProps) => {
 	return (
 		<Box
-			w='20px'
-			h='30px'
+			w='25px'
+			h='100%'
 			mr='1px'
 			cursor='pointer'
 			backgroundColor={color}
