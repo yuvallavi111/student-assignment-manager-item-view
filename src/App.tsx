@@ -43,18 +43,14 @@ const App = () => {
 	const onDifficultyChanged = useHandler((index: number) => {
 		setDifficultyValue(index)
 		if (itemId) {
-			monday.storage.instance.setItem(`difficulty-${itemId}`, index).then((res) => {
-				console.log(res)
-			})
+			monday.storage.instance.setItem(`difficulty-${itemId}`, index)
 		}
 	})
 
 	const onTimeChanged = useHandler((time: ITime) => {
 		setTimeValue(time)
 		if (itemId) {
-			monday.storage.instance.setItem(`time-${itemId}`, JSON.stringify(time)).then((res) => {
-				console.log(res)
-			})
+			monday.storage.instance.setItem(`time-${itemId}`, JSON.stringify(time))
 		}
 	})
 
@@ -82,7 +78,6 @@ const App = () => {
 			return
 		}
 		monday.storage.instance.getItem(`time-${itemId}`).then((res) => {
-			console.log(JSON.parse(res.data.value))
 			setTimeValue(JSON.parse(res.data.value) || { hours: 0, minutes: 0 })
 		})
 		monday.storage.instance.getItem(`difficulty-${itemId}`).then((res) => {
