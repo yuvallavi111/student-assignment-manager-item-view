@@ -1,7 +1,9 @@
 import { Box, Button, Grid } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useHandler } from 'react-handler-hooks'
+import { ItemDetails } from './details/ItemDetails'
 import { Difficulty } from './inputs/Difficulty/difficulty'
+import { FileInput } from './inputs/file-input'
 import { Time } from './inputs/Time/time'
 import { theme } from './theme'
 // import mondaySdk from 'monday-sdk-js'
@@ -21,6 +23,15 @@ const App = () => {
 			pos='relative'
 			backgroundColor={'#1f2136'}
 		>
+			<ItemDetails
+				left='15px'
+				top='15px'
+				pos='absolute'
+				dueDate='14.05.22 at 14:00'
+				title='Assignment1'
+			/>
+
+			<FileInput left='15px' top='200px' pos='absolute' />
 			<Grid
 				bottom='15px'
 				left='15px'
