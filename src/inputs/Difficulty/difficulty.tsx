@@ -8,6 +8,8 @@ interface IDifficultyProps extends FlexProps {
 	onChangeHandler: (index: number) => void
 }
 
+const baseURL = 'https://student-assignment-manager-test-bucket.s3.amazonaws.com/'
+
 export const Difficulty = ({ value, onChangeHandler, ...props }: IDifficultyProps) => {
 	const [isHover, setIsHover] = useState(false)
 	const [hoveredIndex, setHoveredIndex] = useState(0)
@@ -23,14 +25,14 @@ export const Difficulty = ({ value, onChangeHandler, ...props }: IDifficultyProp
 							setHoveredIndex(i)
 						}}
 						onUnHover={() => setIsHover(false)}
-						color={
+						src={
 							isHover
 								? i > hoveredIndex
-									? theme.defaultColor
-									: theme.diffcultyColors[hoveredIndex]
+									? `${baseURL}${0}.png`
+									: `${baseURL}${i + 1}.png`
 								: i > value
-								? theme.defaultColor
-								: theme.diffcultyColors[value]
+								? `${baseURL}${0}.png`
+								: `${baseURL}${i + 1}.png`
 						}
 						onClick={() => onChangeHandler(i)}
 					/>

@@ -120,27 +120,27 @@ const App = () => {
 				pos='absolute'
 				left='50%'
 				transform='translateX(-50%)'
-				top='420px'
-				height='50px'
+				top='405px'
+				height='75px'
 			/>
 			<Time value={timeValue} onChangeHandler={onTimeChanged} />
 			<Button
 				cursor={isDisabled ? 'not-allowed' : 'pointer'}
-				height='40px'
-				width='80px'
+				height='60px'
+				width='160px'
 				bottom='80px'
 				isDisabled={isDisabled}
 				pos='absolute'
 				left='50%'
 				borderRadius='4px'
-				color={isDisabled ? theme.activeColor : 'black'}
+				color={isDisabled ? theme.ctaColors.disabledText : theme.ctaColors.text}
 				fontWeight='500'
 				transform='translateX(-50%)'
-				fontSize='20px'
+				fontSize='30px'
 				lineHeight='40px'
 				textAlign='center'
-				backgroundColor={isDisabled ? theme.disabledColor : theme.defaultColor}
-				_active={{ bg: theme.activeColor }}
+				backgroundColor={isDisabled ? theme.ctaColors.disabled : theme.ctaColors.default}
+				_active={{ bg: theme.ctaColors.active }}
 				border='none'
 				onClick={() => {
 					monday.execute('notice', {
