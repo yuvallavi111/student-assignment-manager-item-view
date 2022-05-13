@@ -9,16 +9,10 @@ interface IItemDetailsProps extends BoxProps {
 export const ItemDetails = ({ title, dueDate, ...props }: IItemDetailsProps) => {
 	return (
 		<Box data-id='ItemDetails' {...props}>
-			<Box fontSize={theme.fontSizes.title} color={theme.defaultColor} w='100%' textAlign='left'>
+			<Box fontSize={theme.fontSizes.title} color={theme.defaultColor} w='100%'>
 				{title}
 			</Box>
-			<Box
-				marginTop='15px'
-				fontSize={theme.fontSizes.medium}
-				color={theme.defaultColor}
-				w='100%'
-				textAlign='left'
-			>
+			<Box marginTop='15px' fontSize={theme.fontSizes.medium} color={theme.defaultColor} w='100%'>
 				{`Due Date: ${dueDate}`}
 			</Box>
 		</Box>

@@ -96,8 +96,10 @@ const App = () => {
 	return (
 		<Box data-id='App' w='100%' h='100%' pos='relative' backgroundColor={'#00000000'}>
 			<ItemDetails
-				left='15px'
-				top='15px'
+				w='100%'
+				h='100%'
+				top='30px'
+				textAlign='center'
 				pos='relative'
 				dueDate={
 					itemDetails?.column_values.find((c) => c.title === 'Due Date')?.text || 'Loading...'
@@ -105,36 +107,35 @@ const App = () => {
 				title={itemDetails?.name || 'Loading...'}
 			/>
 
-			<FileInput left='15px' top='130px' pos='relative' />
+			<FileInput transform='translateX(-35%)' left='50%' top='150px' pos='absolute' />
 			{isDisabled && (
 				<Box color={theme.defaultColor} pos='relative' top='180px' left='15px'>
 					Please Set the time it took you to finish the assignment, and how difficult it was in
 					order to submit.
 				</Box>
 			)}
-			<Grid
-				bottom='15px'
-				left='15px'
+			<Difficulty
+				value={difficultyValue}
+				onChangeHandler={onDifficultyChanged}
 				pos='absolute'
-				width='300px'
-				height='40px'
-				templateColumns='1fr 1fr'
-				gap={4}
-			>
-				<Difficulty value={difficultyValue} onChangeHandler={onDifficultyChanged} />
-				<Time value={timeValue} onChangeHandler={onTimeChanged} />
-			</Grid>
+				left='50%'
+				transform='translateX(-50%)'
+				top='420px'
+				height='50px'
+			/>
+			<Time value={timeValue} onChangeHandler={onTimeChanged} />
 			<Button
 				cursor={isDisabled ? 'not-allowed' : 'pointer'}
 				height='40px'
 				width='80px'
-				bottom='15px'
-				right='15px'
+				bottom='80px'
 				isDisabled={isDisabled}
 				pos='absolute'
+				left='50%'
 				borderRadius='4px'
 				color={isDisabled ? theme.activeColor : 'black'}
 				fontWeight='500'
+				transform='translateX(-50%)'
 				fontSize='20px'
 				lineHeight='40px'
 				textAlign='center'

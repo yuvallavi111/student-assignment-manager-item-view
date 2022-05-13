@@ -22,7 +22,7 @@ export const Time = ({ value, onChangeHandler, ...props }: ITimeProps) => {
 			color: '#606c6e',
 			outline: '0 solid transparent',
 			border: '0 solid transparent',
-			fontSize: '30px',
+			fontSize: '40px',
 			borderRadius: '4px',
 			letterSpacing: '-0.4px',
 			min: 0,
@@ -33,10 +33,15 @@ export const Time = ({ value, onChangeHandler, ...props }: ITimeProps) => {
 	return (
 		<Grid
 			textAlign='center'
-			fontSize='30px'
-			height='40px'
-			width='130px'
+			fontSize='40px'
+			height='60px'
+			data-id='Time'
+			width='180px'
+			position='absolute'
+			left='50%'
+			top='250px'
 			templateColumns='1fr 4px 1fr'
+			transform='translateX(-54%)'
 			gap={6}
 			{...props}
 		>
