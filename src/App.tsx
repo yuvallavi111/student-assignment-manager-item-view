@@ -14,6 +14,8 @@ interface IItemDetails {
 	name: string
 	column_values: [{ title: string; text: string; id: string }]
 }
+
+const difficulties = [1, 0, 2, 3, 4]
 const App = () => {
 	const [itemId, setItemId] = useState(0)
 	const [boardId, setBoardId] = useState(0)
@@ -22,7 +24,7 @@ const App = () => {
 	const [itemDetails, setItemDetails] = useState<IItemDetails>()
 
 	const mutateColumn = useHandler((columnId: string, value: string) => {
-		const query = `mutation {change_simple_column_value (board_id: ${boardId}, item_id: ${itemId}, column_id: ${columnId}, value: ${value}) {id}}`
+		const query = `mutation {change_simple_column_value (board_id: ${boardId}, item_id: ${itemId}, column_id: ${columnId}, value: "${value}") {id}}`
 
 		fetch('https://api.monday.com/v2', {
 			method: 'post',
@@ -44,6 +46,8 @@ const App = () => {
 		setDifficultyValue(index)
 		if (itemId) {
 			monday.storage.instance.setItem(`difficulty-${itemId}`, index)
+			console.log(index)
+			mutateColumn('status5', `${difficulties[index]}`)
 		}
 	})
 
@@ -51,6 +55,10 @@ const App = () => {
 		setTimeValue(time)
 		if (itemId) {
 			monday.storage.instance.setItem(`time-${itemId}`, JSON.stringify(time))
+			mutateColumn(
+				'text',
+				`${time.hours < 10 ? '0' : ''}${time.hours}:${time.minutes < 10 ? '0' : ''}${time.minutes}`
+			)
 		}
 	})
 
